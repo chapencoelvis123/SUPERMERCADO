@@ -14,7 +14,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all();
+
+        return view('empresas.index', compact('empresas'));
     }
 
     /**
@@ -24,7 +26,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('empresas.create');
     }
 
     /**
@@ -35,7 +37,7 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hola mundo";
     }
 
     /**
