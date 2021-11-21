@@ -15,11 +15,32 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.*')">
+                        Usuario
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('empresa.index') }}" :active="request()->routeIs('empresa.*')">
                         Empresa
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.*')">
                         Producto
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('contacto.index') }}" :active="request()->routeIs('contacto.*')">
+                        Contactos
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('detalleventa.index') }}" :active="request()->routeIs('detalleventa.*')">
+                        Detalle Venta
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('compradetalle.index') }}" :active="request()->routeIs('compradetalle.*')">
+                        Detalle Compra
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('compra.index') }}" :active="request()->routeIs('compra.*')">
+                        Compra
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('venta.index') }}" :active="request()->routeIs('venta.*')">
+                        Venta
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('categoria.index') }}" :active="request()->routeIs('categoria.*')">
+                        Categoria
                     </x-jet-nav-link>
                 </div>
             </div>

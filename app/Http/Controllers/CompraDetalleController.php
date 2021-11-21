@@ -14,7 +14,9 @@ class CompraDetalleController extends Controller
      */
     public function index()
     {
-        //
+        $compra_detalles = CompraDetalle::all();
+
+        return view('detallecompra.index', compact('compra_detalles'));
     }
 
     /**

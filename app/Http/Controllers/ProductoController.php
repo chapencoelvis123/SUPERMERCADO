@@ -28,7 +28,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('productos.create', compact('categorias'));
     }
 
     /**
@@ -39,7 +40,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hola productos";
     }
 
     /**

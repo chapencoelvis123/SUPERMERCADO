@@ -28,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('empresas.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hola categoria";
     }
 
     /**
