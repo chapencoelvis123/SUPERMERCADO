@@ -22,6 +22,7 @@
               <th class="px-4 py-3">Nombre Empresa</th>
               <th class="px-4 py-3">Ubicación</th>
               <th class="px-4 py-3">Teléfono</th>
+              <th class="px-4 py-3">Acciones</th>
             </tr>
           </thead>
           <tbody class="bg-white">
@@ -33,13 +34,19 @@
                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                   </div>
                   <div>
-                    <p class="font-semibold text-black"> {{$empresa->nombre}} </p>                    
+                  <a href="{{route('empresa.show', $empresa->id)}}"><p class="font-semibold text-black"> {{$empresa->nombre}} </p></a>                    
                   </div>
                 </div>
               </td>
               <td class="px-4 py-3 text-ms font-semibold border">{{$empresa->ubicacion}}</td>
               <td class="px-4 py-3 text-xs border">
                 <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{$empresa->telefono}} </span>
+              </td>
+              <td class="px-4 py-3 text-ms font-semibold border">
+                <form action="{{ route('empresa.destroy', $empresa) }}" method="POST">
+                  @csrf @method('DELETE')
+                  <button class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300">Eliminar</button>
+                </form>
               </td>
             </tr>
             @endforeach

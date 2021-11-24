@@ -40,7 +40,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        return "hola productos";
+        
+        $fields = $request->validate([
+            'nombre' => 'required', 
+            'precio' => 'required', 
+            'categoria_id' => 'required'
+        ]);
+        Producto::create($fields);
+        
+        return "hola undo";
+        //return redirect()->route('producto.show', $producto);
     }
 
     /**
@@ -51,7 +60,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        return view('productos.show', $producto);
     }
 
     /**

@@ -32,7 +32,7 @@
                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                   </div>
                   <div>
-                    <p class="font-semibold text-black"> {{$producto->nombre}} </p>                    
+                    <a href="{{route('producto.show', $producto)}}"><p class="font-semibold text-black"> {{$producto->nombre}} </p></a>                    
                   </div>
                 </div>
               </td>

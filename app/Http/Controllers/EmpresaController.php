@@ -37,7 +37,22 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        return "hola mundo";
+        
+        $request->validate([
+            'nombre' => 'required',
+            'ubicacion' => 'required',
+            'telefono' => 'required|integer'
+        ]);
+        
+        $empresa = new Empresa();
+        $empresa->nombre = $request->nombre;
+        $empresa->ubicacion = $request->ubicacion;
+        $empresa->telefono = $request->telefono;
+        $empresa->save();
+
+        $empresas = Empresa::all();
+        return view('empresas.index', compact('empresas'));
+        //return redirect()->route('empresa.show', $empresa);
     }
 
     /**
@@ -48,7 +63,8 @@ class EmpresaController extends Controller
      */
     public function show(Empresa $empresa)
     {
-        //
+        //$empresa = Empresa::find($empresa->id);
+        return view('empresas.show', compact('empresa'));
     }
 
     /**
@@ -59,7 +75,7 @@ class EmpresaController extends Controller
      */
     public function edit(Empresa $empresa)
     {
-        //
+        return view('empresas.edit', compact('empresa'));
     }
 
     /**
@@ -71,7 +87,15 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
-        //
+        $fields = $request->validate([
+            'nombre' => 'required',
+            'ubicacion' => 'required',
+            'telefono' => 'required|integer'
+        ]);
+        $empresa->update($fields);
+
+        $empresas = Empresa::all();
+        return view('empresas.index', compact('empresas'));
     }
 
     /**
@@ -82,6 +106,9 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        $empresa->delete();
+
+        $empresas = Empresa::all();
+        return redirect()->route('empresa.index', $empresas);
     }
 }

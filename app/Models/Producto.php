@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nombre', 'precio', 'categoria_id'];
+
     public function compradetalle(){
         return $this->belongsTo('App\Models\CompraDetalle');
             }
