@@ -12,8 +12,12 @@
 <section class="container mx-auto p-6 font-mono">
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
+        <a 
+        href="{{ route('categoria.create') }}"
+        class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300">Registrar Categoria</a>
         <table class="w-full">
           <thead>
+            
             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
               <th class="px-4 py-3">Nombre </th>
            
@@ -31,6 +35,7 @@
                     <p class="font-semibold text-black"> {{$categoria->nombre}} </p>                    
                   </div>
                 </div>
+                
               </td>
              
             

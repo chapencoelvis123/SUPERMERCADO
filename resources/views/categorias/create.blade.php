@@ -11,7 +11,7 @@
 
                 <div class="max-w-lg mx-auto">
     
-                    <form action="{{route('empresa.store')}}" method="POST">
+                    <form action="{{route('categoria.store')}}" method="POST">
                         @csrf
                         <div class="mb-6">
                             <label for="nombre" class="text-sm font-medium text-gray-900 block mb-2">Nombre :</label>

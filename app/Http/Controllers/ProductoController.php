@@ -47,8 +47,11 @@ class ProductoController extends Controller
             'categoria_id' => 'required'
         ]);
         Producto::create($fields);
-        
-        return "hola undo";
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+
+        return view('productos.index', compact(['productos', 'categorias']));
+       
         //return redirect()->route('producto.show', $producto);
     }
 

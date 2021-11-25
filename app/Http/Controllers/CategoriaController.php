@@ -28,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('empresas.create');
+        return view('categorias.create');
     }
 
     /**
@@ -39,7 +39,19 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        return "hola categoria";
+        $fields = $request->validate([
+            'nombre' => 'required | unique:categorias'
+            ]);
+        $categoria = new Categoria();  
+        
+        $categoria->nombre = $request->input('nombre');
+           
+        $categoria->save();
+        $categorias = Categoria::All();
+        return view('categorias.index', compact('categorias'));
+
+      
+       // Categoria::create($fields);
     }
 
     /**
@@ -50,7 +62,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        return view('categorias.show', $categoria);
     }
 
     /**
