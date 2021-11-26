@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Producto;
+use App\Models\Compra;
 use App\Models\CompraDetalle;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,11 @@ class CompraDetalleController extends Controller
      */
     public function index()
     {
-        $compra_detalles = CompraDetalle::all();
+        $compradetalles = Compradetalle::all();
+        $compras = Compra::all();
+        $productos = Producto::all();
 
-        return view('detallecompra.index', compact('compra_detalles'));
+        return view('detallecompra.index', compact(['compradetalles', 'compras','productos']));
     }
 
     /**
@@ -26,7 +29,9 @@ class CompraDetalleController extends Controller
      */
     public function create()
     {
-        //
+        $compras = Compra::all();
+        $productos = Producto::all();
+        return view('detallecompra.create', compact(['compras','productos']));
     }
 
     /**
@@ -37,7 +42,17 @@ class CompraDetalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'cantidad' => 'required', 
+            'precio_total' => 'required', 
+            'compra_id' => 'required',
+            'producto_id' => 'required'
+        ]);
+        Producto::create($fields);
+        $compradetalles = CompraDetalle::all();
+        $compras = Compra::all();
+        $productos = Producto::all();
+        return view('compradetalles.index', compact(['compradetalles', 'compras','productos']));
     }
 
     /**
@@ -48,7 +63,7 @@ class CompraDetalleController extends Controller
      */
     public function show(CompraDetalle $compraDetalle)
     {
-        //
+        return view('compradetalles.show', compact('compradetalle'));
     }
 
     /**
@@ -59,7 +74,9 @@ class CompraDetalleController extends Controller
      */
     public function edit(CompraDetalle $compraDetalle)
     {
-        //
+        $compras = Compra::all();
+        $productos= Producto::all();
+        return view('compradetalle.edit', compact(['compradetalle','compra','producto']));
     }
 
     /**
@@ -71,7 +88,19 @@ class CompraDetalleController extends Controller
      */
     public function update(Request $request, CompraDetalle $compraDetalle)
     {
-        //
+        $fields = $request->validate([
+            'cantidad' => 'required', 
+            'precio_total' => 'required', 
+            'compra_id' => 'required',
+            'producto_id' => 'required'
+        ]);
+        $compraDetalle->update($fields);
+
+        $compradetalles = CompraDetalle::all();
+        $compras = Compra::all();
+        $productos = Producto::all();
+
+        return view('compradetalles.index', compact(['compradetalles', 'compras','productos']));
     }
 
     /**
@@ -82,6 +111,11 @@ class CompraDetalleController extends Controller
      */
     public function destroy(CompraDetalle $compraDetalle)
     {
-        //
+        $compraDetalle->delete();
+
+        $compradetalles = CompraDetalle::all();
+        $compras = Compra::all();
+        $productos = Producto::all();
+        return redirect()->route('compradetalle.index', compact(['compradetalle', 'compras','productos']))->with('status', 'Producto eliminado');
     }
 }

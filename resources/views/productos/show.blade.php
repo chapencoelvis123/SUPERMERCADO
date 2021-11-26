@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Empresa
+            Producto
         </h2>
     </x-slot>
 
@@ -16,12 +16,12 @@
                         <div class="text-sm mt-2">
                             <div
                                 class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                {{$producto->nombre}}
+                                {{$producto->cantidad}}
                             </div>
                             <div class="text-sm mt-2">
                                 <div
                                     class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                    {{$producto->precio}}
+                                    {{$producto->preciototal}}
                                 </div>
                                 <div class="text-sm mt-2">
                                     <div
@@ -30,7 +30,9 @@
                                     </div>
 
                                 </div>
+                                
                             </div>
+                            
                         </div>
 
                     </div>
