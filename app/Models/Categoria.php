@@ -9,6 +9,6 @@ class Categoria extends Model
 {
     use HasFactory;
     public function producto(){
-        return $this->belongsTo('App\Models\Producto');
+        return $this->hasOne('App\Models\Producto');
             }
 }

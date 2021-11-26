@@ -21,6 +21,7 @@
               <th class="px-4 py-3">Nombre </th>
               <th class="px-4 py-3">Precio</th>
               <th class="px-4 py-3">Categoria</th>
+              <th class="px-4 py-3">Acciones</th>
             </tr>
           </thead>
           <tbody class="bg-white">
@@ -41,9 +42,16 @@
               @if ($producto->categoria_id == $categoria->id)
               <td class="px-4 py-3 text-xs border">
                 <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{$categoria->nombre}} </span>
-              </td>                                    
+              </td>                                                  
               @endif
               @endforeach
+              <td class="px-4 py-3 text-ms font-semibold border">
+                <a href=" {{route('producto.edit', $producto)}} " class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300">Editar</a>
+                <form action="{{ route('producto.destroy', $producto) }}" method="POST">
+                  @csrf @method('DELETE')
+                  <button class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">Eliminar</button>
+                </form>
+              </td>
             </tr>
             @endforeach
           </tbody>

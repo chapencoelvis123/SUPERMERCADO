@@ -18,6 +18,6 @@ class Producto extends Model
                 return $this->belongsTo('App\Models\DetalleVenta');
                     }
                     public function categoria(){
-                        return $this->hasOne('App\Models\Categoria');
+                        return $this->belongsTo('App\Models\Categoria');
                             }
 }

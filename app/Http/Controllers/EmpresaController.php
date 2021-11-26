@@ -41,7 +41,7 @@ class EmpresaController extends Controller
         $request->validate([
             'nombre' => 'required',
             'ubicacion' => 'required',
-            'telefono' => 'required|integer'
+            'telefono' => 'required|numeric'
         ]);
         
         $empresa = new Empresa();
