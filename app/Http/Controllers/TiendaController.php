@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Venta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class TiendaController extends Controller
 {
@@ -44,10 +48,29 @@ class TiendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
+    {                
 
+        $request->validate([
+            'cantidad' => 'required'
+        ]);
+
+        $venta = new Venta;
+        $venta->nit = Auth::id();
+        $venta->cantidad = $request->input('cantidad');
+        $venta->precio_total = $request->input('precio') * $request->input('cantidad');
+        $venta->producto_id = $request['producto_id'];
+        $venta->user_id = Auth::id();
+        
+        $venta->save();
+
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+
+        return view('tiendas._index', compact('productos', 'categorias'))->with('success', 'Se ha procesado tu pedido');
+
+        
+    }
+    
     /**
      * Display the specified resource.
      *

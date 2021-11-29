@@ -26,16 +26,7 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('contacto.index') }}" :active="request()->routeIs('contacto.*')">
                         Contactos
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('detalleventa.index') }}" :active="request()->routeIs('detalleventa.*')">
-                        Detalle Venta
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('compradetalle.index') }}" :active="request()->routeIs('compradetalle.*')">
-                        Detalle Compra
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('compra.index') }}" :active="request()->routeIs('compra.*')">
-                        Compra
-                    </x-jet-nav-link>
+                    </x-jet-nav-link>                                        
                     <x-jet-nav-link href="{{ route('venta.index') }}" :active="request()->routeIs('venta.*')">
                         Venta
                     </x-jet-nav-link>

@@ -31,6 +31,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', TiendaController::class)->name('dashboard');
 
 Route::resource('tiendas', TiendaController::class);
+Route::get('tiendas/{producto}', [TiendaController::class, 'crearPedido'])->name('tiendas.crearPedido');
 
 Route::resource('user', UserController::class);
 Route::resource('empresa', EmpresaController::class);
