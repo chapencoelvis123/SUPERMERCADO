@@ -11,13 +11,16 @@ class Producto extends Model
 
     protected $fillable = ['nombre', 'precio', 'categoria_id'];
 
-    public function compradetalle(){
+    public function compradetalle()
+    {
         return $this->belongsTo('App\Models\CompraDetalle');
-            }
-            public function detalleventa(){
-                return $this->belongsTo('App\Models\DetalleVenta');
-                    }
-                    public function categoria(){
-                        return $this->belongsTo('App\Models\Categoria');
-                            }
+    }
+    public function detalleventa()
+    {
+        return $this->belongsTo('App\Models\DetalleVenta');
+    }
+    public function categoria()
+    {
+        return $this->belongsTo('App\Models\Categoria');
+    }
 }

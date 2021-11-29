@@ -17,6 +17,9 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        {{-- recaptcha --}}
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
